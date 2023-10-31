@@ -40,7 +40,7 @@ class AppBody extends React.Component {
   render() {
     return (
       <div className="note-app__body">
-        <NoteInput addNote={this.onAddNotetHandler} />
+        <NoteInput addNote={this.onAddNoteHandler} />
         <h2>Catatan Aktif</h2>
         <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} />
         <h2>Arsip</h2>

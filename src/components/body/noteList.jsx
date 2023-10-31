@@ -16,7 +16,7 @@ function NoteList({ notes, onDelete, onArchived }) {
             onDelete={onDelete} 
             onArchived={onArchived} 
             />
-        ) : null
+        ) : null;
       })}
     </div>
   );
