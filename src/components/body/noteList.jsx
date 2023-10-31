@@ -12,9 +12,9 @@ function NoteList({ notes, onDelete, onArchived }) {
           id={note.id} 
           title={note.title} 
           createdAt={note.createdAt} 
-            body={note.body} 
-            onDelete={onDelete} 
-            onArchived={onArchived} 
+          body={note.body} 
+          onDelete={onDelete} 
+          onArchived={onArchived} 
             />
         ) : null;
       })}

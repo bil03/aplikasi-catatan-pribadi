@@ -49,12 +49,15 @@ class InputForm extends React.Component {
 
   render() {
     return (
-      <form onSubmit={this.onSubmitEventHandler}>
-        {this.state.title.length < 50 ? <p className="note-input__title__char-limit">karakter tersisa {50 - this.state.title.length} </p> : <p className="note-input__title__char-limit">karakter tersisa {50 - this.state.title.length} </p>}
-        <input onChange={this.onTitleChangeEventHandler} className="note-input__title" value={this.state.title} type="text" placeholder="Ini adalah judul ..." required />
-        <textarea className="note-input__body" value={this.state.body} onChange={this.onBodyChangeEventHandler} placeholder="Tuliskan catatanmu di sini ..." required></textarea>
-        <button type="submit">buat</button>
-      </form>
+      <div className="note-input">
+        <h2>Buat catatan</h2>
+        <form onSubmit={this.onSubmitEventHandler}>
+          {this.state.title.length < 50 ? <p className="note-input__title__char-limit">karakter tersisa {50 - this.state.title.length} </p> : <p className="note-input__title__char-limit">karakter tersisa {50 - this.state.title.length} </p>}
+          <input onChange={this.onTitleChangeEventHandler} className="note-input__title" value={this.state.title} type="text" placeholder="Ini adalah judul ..." required />
+          <textarea className="note-input__body" value={this.state.body} onChange={this.onBodyChangeEventHandler} placeholder="Tuliskan catatanmu di sini ..." required></textarea>
+          <button type="submit">buat</button>
+        </form>
+      </div>
     );
   }
 }
