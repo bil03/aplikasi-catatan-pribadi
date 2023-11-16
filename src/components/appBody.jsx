@@ -9,6 +9,7 @@ class AppBody extends React.Component {
     super(props);
     this.state = {
       notes: getInitialData(),
+      queryFilter: '',
     };
 
     this.onDeleteHandler = this.onDeleteHandler.bind(this);
@@ -29,7 +30,7 @@ class AppBody extends React.Component {
         note.archived = !note.archived;
       }
       return note;
-    })
+    });
     this.setState({ notes });
   }
 
@@ -43,16 +44,11 @@ class AppBody extends React.Component {
     this.setState({ notes });
   }
 
-onSearchHandler(event) {
-  const searched = event.target.value.toLowerCase();
-  this.setState((prevState) => {
-    return {
-      notes: prevState.notes.filter((note) => {
-        return note.title.toLowerCase().includes(searched);
-      }),
-    };
-  });
-}
+  onSearchHandler(valueInput) {
+    this.setState({
+      queryFilter: valueInput,
+    });
+  }
 
   onAddNoteHandler({ title, body }) {
     this.setState((prevState) => {
@@ -71,9 +67,12 @@ onSearchHandler(event) {
   }
 
   render() {
+    const filteredNotes = this.state.notes.filter((note) => 
+        note.title.toLowerCase().includes(this.state.queryFilter.toLowerCase())
+    )
     return (
       <Fragment>
-        <AppHeader onSearch={this.onSearchHandler} />
+        <AppHeader notes={filteredNotes} />
         <div className="note-app__body">
           <InputForm addNote={this.onAddNoteHandler} />
           <NoteList notes={this.state.notes} onDelete={this.onDeleteHandler} onArchived={this.onArchiveHandler} onActive={this.onActiveHandler} />
